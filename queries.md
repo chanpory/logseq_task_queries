@@ -39,7 +39,7 @@
                [(< ?d ?today)]]
        :inputs [:today]
        :collapsed? false}]}
-      #END_QUERY
+      #+END_QUERY
       ```
 - Done
     - ```
