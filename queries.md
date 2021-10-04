@@ -21,7 +21,7 @@
                       [?p :block/journal-day ?d]
                       [(>= ?d ?today)]]
        :inputs [:today]
-       :collapsed? false}]}
+       :collapsed? false}
       #+END_QUERY
       ```
 - Overdue
@@ -38,7 +38,7 @@
                [?p :block/journal-day ?d]
                [(< ?d ?today)]]
        :inputs [:today]
-       :collapsed? false}]}
+       :collapsed? false}
       #+END_QUERY
       ```
 - Done
@@ -49,7 +49,7 @@
               :where
               [?b :block/marker ?marker]
               [(contains? #{"DONE" "CANCELED"} ?marker)]]
-       :collapsed? false}]}
+       :collapsed? false}
       #+END_QUERY
       ```
 - Backlog
@@ -61,6 +61,6 @@
                       [(contains? #{"LATER" "TODO"} ?marker)]
                       (not [?b :block/ref-pages ?p] 
                            [?p :block/journal? true])]
-       :collapsed? false}]}
+       :collapsed? false}
       #+END_QUERY
       ```
