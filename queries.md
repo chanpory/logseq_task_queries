@@ -1,13 +1,15 @@
 - Now
-  - ```
-    #+BEGIN_QUERY
-    {:title ""
-     :query [:find (pull ?b [*])
-             :where [?b :block/marker ?marker]
-            	    [(contains? #{"NOW" "DOING"} ?marker)]]
-     :collapsed? false}
-    #+END_QUERY 
-    ```
+    - ```
+      #+BEGIN_QUERY
+      {:title ""
+       :query [:find (pull ?b [*])
+               :where [?b :block/marker ?marker]
+              	      [(contains? #{"NOW" "DOING"} ?marker)]]
+       :breadcrumb-show? false
+       :result-transform (fn [result] (reverse (sort-by (fn [h]) result)))
+       :collapsed? false}
+      #+END_QUERY 
+      ```
 - Scheduled
     - ```
       #+BEGIN_QUERY
@@ -21,6 +23,8 @@
                       [?p :block/journal-day ?d]
                       [(>= ?d ?today)]]
        :inputs [:today]
+       :breadcrumb-show? false
+       :result-transform (fn [result] (reverse (sort-by (fn [h]) result)))       
        :collapsed? false}
       #+END_QUERY
       ```
@@ -38,6 +42,8 @@
                [?p :block/journal-day ?d]
                [(< ?d ?today)]]
        :inputs [:today]
+       :breadcrumb-show? false
+       :result-transform (fn [result] (reverse (sort-by (fn [h]) result)))
        :collapsed? false}
       #+END_QUERY
       ```
@@ -49,6 +55,8 @@
               :where
               [?b :block/marker ?marker]
               [(contains? #{"DONE" "CANCELED"} ?marker)]]
+       :breadcrumb-show? false
+       :result-transform (fn [result] (reverse (sort-by (fn [h]) result)))
        :collapsed? false}
       #+END_QUERY
       ```
@@ -61,6 +69,8 @@
                       [(contains? #{"LATER" "TODO"} ?marker)]
                       (not [?b :block/ref-pages ?p] 
                            [?p :block/journal? true])]
+       :breadcrumb-show? false
+       :result-transform (fn [result] (reverse (sort-by (fn [h]) result)))
        :collapsed? false}
       #+END_QUERY
       ```
