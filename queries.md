@@ -1,4 +1,4 @@
-- Now
+- ✅ Now
     - ```
       #+BEGIN_QUERY
       {:title ""
@@ -10,7 +10,7 @@
        :collapsed? false}
       #+END_QUERY 
       ```
-- Scheduled
+- 📅 Scheduled
     - ```
       #+BEGIN_QUERY
       {:title ""
@@ -28,7 +28,7 @@
        :collapsed? false}
       #+END_QUERY
       ```
-- Overdue
+- 🔴 Overdue
     - ```
       #+BEGIN_QUERY
       {:title ""
@@ -47,20 +47,7 @@
        :collapsed? false}
       #+END_QUERY
       ```
-- Done
-    - ```
-      #+BEGIN_QUERY
-      {:title ""
-       :query [:find (pull ?b [*])
-              :where
-              [?b :block/marker ?marker]
-              [(contains? #{"DONE" "CANCELED"} ?marker)]]
-       :breadcrumb-show? false
-       :result-transform (fn [result] (reverse (sort-by (fn [h]) result)))
-       :collapsed? false}
-      #+END_QUERY
-      ```
-- Backlog
+- 🗄 Backlog
     - ```
       #+BEGIN_QUERY
       {:title ""
@@ -72,5 +59,18 @@
        :breadcrumb-show? false
        :result-transform (fn [result] (reverse (sort-by (fn [h]) result)))
        :collapsed? false}
+      #+END_QUERY
+      ```
+- ✔️ Done
+    - ```
+      #+BEGIN_QUERY
+      {:title ""
+       :query [:find (pull ?b [*])
+              :where
+              [?b :block/marker ?marker]
+              [(contains? #{"DONE" "CANCELED"} ?marker)]]
+       :breadcrumb-show? false
+       :result-transform (fn [result] (reverse (sort-by (fn [h]) result)))
+       :collapsed? true}
       #+END_QUERY
       ```
